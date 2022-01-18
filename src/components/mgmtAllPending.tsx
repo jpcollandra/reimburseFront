@@ -28,6 +28,7 @@ export default function MgmtAllPending() {
         <Table striped bordered hover size="sm">
             <thead>
                 <tr>
+                    <th>Item ID</th>
                     <th>Username</th>
                     <th>Item Name</th>
                     <th>Description</th>
@@ -37,6 +38,7 @@ export default function MgmtAllPending() {
             <tbody>
                 {items.map((item) => (
                     <tr>
+                        <td>{item.id}</td>
                         <td>{item.username}</td>
                         <td>{item.itemName}</td>
                         <td>{item.itemDescription}</td>

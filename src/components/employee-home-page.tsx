@@ -19,7 +19,10 @@ export default function EmployeeHomePage(){
 
 
     return(<>
-        <Sidenav/>|
+        <Sidenav/>
+        <EmployeeHistTbl/>
+{/*         <div className="component-space">
         <MgmtAllPending />
+        </div> */}
     </>)
 }

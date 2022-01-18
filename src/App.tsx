@@ -12,7 +12,10 @@ export default function App() {
   })
 
   return (<>
-    <EmployeeHomePage />
+    {
+    !user.username ? <LoginPage updateUser={setUser}/>: 
+    user.isAuthorized ? <EmployeeHomePage/>:<EmployeeHomePage/>
+    } 
   </>);
 }
 

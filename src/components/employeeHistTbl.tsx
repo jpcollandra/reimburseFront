@@ -6,45 +6,52 @@ import "../App.css";
 
 //create a table that will display the employee's Item Reimbursement history using bootstrap table
 
-export default function EmployeeHistTbl(props) {
+export default function EmployeeHistTbl() {
 
-    const {username} = props;   
-    const [employeeHist, setEmployeeHist] = useState([]);
+  const [user, setUser] = useState({
+    username:sessionStorage.getItem('username')
+  })
+
+  const username = user.username;
+
+  const [employeeHist, setEmployeeHist] = useState([]);
 
 
-    useEffect(()=>{
-        // IIFE Immediately Invoked Function Expression
-        (async ()=>{
-            const response = await fetch(`http://localhost:5000/items/${username}`)
-            const employeeHist = await response.json();
-            setEmployeeHist(employeeHist)
-        })()
-    },[employeeHist])
+    async function fetchEmployeeLog() {
+      const response = await fetch(`http://localhost:3000/items/username/${username}`)
+      const employeeLog = await response.json();
+      console.log(employeeLog);
+      setEmployeeHist(employeeLog)
 
-    const tableRows = () => {
-        return employeeHist.map(item => {
-            return (
-                <tr>
-                    <td>{item.username}</td>
-                    <td>{item.itemName}</td>
-                    <td>{item.itemPrice}</td>
-                    <td>{item.status}</td>
-                </tr>
-            )
-        })
-    }
+  }
+
+  useEffect(() => {
+    fetchEmployeeLog()
+},[]);
+
+
     
 return(
-<Table striped bordered hover size="sm">
+  <Table striped bordered hover size="sm">
   <thead>
-    <tr>
-      <th>Username</th>
-      <th>Item Name</th>
-      <th>Status</th>
-    </tr>
+      <tr>
+          <th>Item ID</th>
+          <th>Username</th>
+          <th>Item Name</th>
+          <th>Description</th>
+          <th>Status</th>
+      </tr>
   </thead>
   <tbody>
-    {tableRows} 
+      {employeeHist.map((item) => (
+          <tr>
+              <td>{item.id}</td>
+              <td>{item.username}</td>
+              <td>{item.itemName}</td>
+              <td>{item.itemDescription}</td>
+              <td>{item.status}</td>
+          </tr>
+      ))}
   </tbody>
 </Table>
 )
