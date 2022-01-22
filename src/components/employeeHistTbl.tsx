@@ -29,7 +29,6 @@ export default function EmployeeHistTbl() {
     fetchEmployeeLog()
 },[]);
 
-
     
 return(
   <Table striped bordered hover size="sm">

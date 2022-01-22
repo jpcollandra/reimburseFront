@@ -1,4 +1,6 @@
 import { useState } from "react";
+import LoginPage from "./login-page";
+import AccessDenied from "./accessDenied";
 import Sidenav  from "./sidenav";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ReimburseTicket from "./reimburseTicket";
@@ -20,9 +22,15 @@ export default function EmployeeHomePage(){
 
     return(<>
         <Sidenav/>
-        <EmployeeHistTbl/>
-{/*         <div className="component-space">
-        <MgmtAllPending />
-        </div> */}
-    </>)
+        <div className="component-space">
+        { !user.isAdmin  ? <MgmtAllPending/>:<EmployeeHistTbl/>}
+        </div>
+
+        <div className="component-space">
+            <div className="center-div">
+            { !user.isAdmin ? <></>:<ReimburseTicket/>}
+            </div>
+        </div>
+    </>
+    )
 }
