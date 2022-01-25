@@ -1,36 +1,33 @@
 import { useState } from "react";
 import LoginPage from "./login-page";
-import AccessDenied from "./accessDenied";
-import Sidenav  from "./sidenav";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import Sidenav from "./sidenav";
+import "bootstrap/dist/css/bootstrap.min.css";
 import ReimburseTicket from "./reimburseTicket";
 import EmployeeHistTbl from "./employeeHistTbl";
 import MgmtAllPending from "./mgmtAllPending";
-import "../App.css"
+import "../App.css";
 
+export default function EmployeeHomePage() {
+  const [user, setUser] = useState({
+    username: sessionStorage.getItem("username"),
+    isAuthorized: Boolean(sessionStorage.getItem("isAuthorized")),
+    status: sessionStorage.getItem("status"),
+    isAdmin: Boolean(sessionStorage.getItem("isAdmin")),
+  });
 
-export default function EmployeeHomePage(){
+  return (
+    <>
+      <Sidenav />
 
-    const [user, setUser] = useState({
-        username:sessionStorage.getItem('username'), 
-        isAuthorized:Boolean(sessionStorage.getItem("isAuthorized")),
-        status:sessionStorage.getItem('status'),
-        isAdmin:Boolean(sessionStorage.getItem("isAdmin"))
-      })
+      <div className="component-space">
+        {!user.isAdmin ? <MgmtAllPending /> : <EmployeeHistTbl />}
+      </div>
 
-
-
-    return(<>
-        <Sidenav/>
-        <div className="component-space">
-        { !user.isAdmin  ? <MgmtAllPending/>:<EmployeeHistTbl/>}
+      <div className="component-space">
+        <div className="center-div">
+          {!user.isAdmin ? <></> : <ReimburseTicket />}
         </div>
-
-        <div className="component-space">
-            <div className="center-div">
-            { !user.isAdmin ? <></>:<ReimburseTicket/>}
-            </div>
-        </div>
+      </div>
     </>
-    )
+  );
 }
