@@ -6,6 +6,7 @@ import ReimburseTicket from "./reimburseTicket";
 import EmployeeHistTbl from "./employeeHistTbl";
 import MgmtAllPending from "./mgmtAllPending";
 import "../App.css";
+import MgmtStats from "./mgmtStats";
 
 export default function EmployeeHomePage() {
   const [user, setUser] = useState({
@@ -18,16 +19,16 @@ export default function EmployeeHomePage() {
   return (
     <>
       <Sidenav />
-
       <div className="component-space">
         {!user.isAdmin ? <MgmtAllPending /> : <EmployeeHistTbl />}
       </div>
 
       <div className="component-space">
         <div className="center-div">
-          {!user.isAdmin ? <></> : <ReimburseTicket />}
+          {!user.isAdmin ? <MgmtStats/> : <ReimburseTicket />}
         </div>
       </div>
+
     </>
   );
 }

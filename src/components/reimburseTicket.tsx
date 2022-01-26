@@ -1,5 +1,7 @@
+import React, { useEffect } from "react";
 import { useRef, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, InputGroup, FormControl } from "react-bootstrap";
+import "react-datepicker/dist/react-datepicker.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { v4 } from "uuid";
 
@@ -17,7 +19,10 @@ export default function ReimburseTicket() {
     username: sessionStorage.getItem("username"),
   });
 
+  const [startDate, setStartDate] = useState(new Date());
+
   const username = user.username;
+
 
   async function submitReimbursement() {
     const reimbursementPayload = {
@@ -39,7 +44,7 @@ export default function ReimburseTicket() {
       body: JSON.stringify(reimbursementPayload),
     });
 
-    console.log(response);
+    window.location.reload();
 
     if (response.status === 200) {
       alert("Item Successfully Submitted!");
@@ -48,31 +53,40 @@ export default function ReimburseTicket() {
     }
   }
 
+
   return (
     <Form>
       <h3>Reimbursement Ticket</h3>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Item Name</Form.Label>
-        <Form.Control
+      <InputGroup size="sm" className="mb-3">
+        <InputGroup.Text id="inputGroup-sizing-sm">Item Name</InputGroup.Text>
+        <FormControl
           ref={itemNameInput}
-          type="form"
-          placeholder="Chick fil A Meal"
+          aria-label="Small"
+          aria-describedby="inputGroup-sizing-sm"
+          placeholder="Chick fil a"
         />
-      </Form.Group>
+      </InputGroup>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Item Cost</Form.Label>
-        <Form.Control ref={itemCostInput} type="form" placeholder="2" />
-      </Form.Group>
+      <InputGroup size="sm" className="mb-3">
+        <InputGroup.Text id="inputGroup-sizing-sm">Cost($)</InputGroup.Text>
+        <FormControl
+          ref={itemCostInput}
+          aria-label="Small"
+          aria-describedby="inputGroup-sizing-sm"
+          placeholder="0.00"
+        />
+      </InputGroup>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Item Description</Form.Label>
+
+      <InputGroup size="sm" className="mb-3">
         <Form.Control
+          type= "date"
           ref={itemDescriptionInput}
-          type="form"
-          placeholder="Date: MM/DD/YYYY + Reason"
+          aria-label="Small"
+          aria-describedby="inputGroup-sizing-sm"
+          placeholder="MM/DD/YYYY"
         />
-      </Form.Group>
+      </InputGroup>
 
       <Button onClick={submitReimbursement} variant="primary" type="submit">
         Submit

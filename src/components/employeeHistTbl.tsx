@@ -29,13 +29,16 @@ export default function EmployeeHistTbl() {
   }, []);
 
   return (
+    <>
+    <h1>Reimbursement Page</h1>
     <Table striped bordered hover size="sm">
       <thead>
         <tr>
           <th>Item ID</th>
           <th>Username</th>
+          <th>Cost($)</th>
           <th>Item Name</th>
-          <th>Description</th>
+          <th>Date</th>
           <th>Status</th>
         </tr>
       </thead>
@@ -44,6 +47,7 @@ export default function EmployeeHistTbl() {
           <tr>
             <td>{item.id}</td>
             <td>{item.username}</td>
+            <td>{item.itemPrice}</td>
             <td>{item.itemName}</td>
             <td>{item.itemDescription}</td>
             <td>{item.status}</td>
@@ -51,5 +55,6 @@ export default function EmployeeHistTbl() {
         ))}
       </tbody>
     </Table>
+    </>
   );
 }

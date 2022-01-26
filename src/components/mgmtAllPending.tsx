@@ -10,6 +10,7 @@ import "../App.css";
 
 export default function MgmtAllPending() {
   const [items, setItems] = useState([]);
+  const [approval, setApproval] = useState([]);
 
   async function fetchItems() {
     const response = await fetch(`http://localhost:3000/items/status/pending`);
@@ -20,7 +21,8 @@ export default function MgmtAllPending() {
 
   useEffect(() => {
     fetchItems();
-  }, []);
+  }, [approval]);
+
 
   async function approveItem(props) {
     //set id to the itemReimID ref
@@ -33,6 +35,9 @@ export default function MgmtAllPending() {
       },
       body: JSON.stringify({ id }),
     });
+    const approval = await response.json();
+    console.log(approval);
+    setApproval(approval);
   }
 
   async function denyItem(props) {
@@ -49,8 +54,10 @@ export default function MgmtAllPending() {
   }
 
   return (
+    <>
+    <h1>All Pending Items</h1>
     <Table striped bordered hover size="sm">
-      <caption>All Pending Items</caption>
+      <caption>Awaiting Approval</caption>
       <thead>
         <tr>
           <th>Item ID</th>
@@ -89,5 +96,6 @@ export default function MgmtAllPending() {
         ))}
       </tbody>
     </Table>
+    </>
   );
 }
