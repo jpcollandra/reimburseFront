@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { Button, Form, InputGroup, FormControl } from "react-bootstrap";
 import "react-datepicker/dist/react-datepicker.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../App.css";
 import { v4 } from "uuid";
 
 // This tsx component will allow employee to submit a reimbursement request
@@ -55,6 +56,8 @@ export default function ReimburseTicket() {
 
 
   return (
+    <>
+    
     <Form>
       <h3>Reimbursement Ticket</h3>
       <InputGroup size="sm" className="mb-3">
@@ -92,5 +95,6 @@ export default function ReimburseTicket() {
         Submit
       </Button>
     </Form>
+    </>
   );
 }

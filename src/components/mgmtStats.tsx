@@ -1,51 +1,35 @@
 //Statistics page for the management portal
 // Language: typescript
-import React, { useState } from 'react';
-import styled from 'styled-components';
-
-
-const Tab = styled.button`
-  font-size: 20px;
-  padding: 10px 60px;
-  cursor: pointer;
-  opacity: 0.6;
-  background: white;
-  border: 0;
-  outline: 1px solid black;
-  ${({ active }) =>
-    active &&
-    `
-    border-bottom: 2px solid black;
-    opacity: 1;
-  `}
-`;
-const ButtonGroup = styled.div`
-  display: flex;
-`;
-
-const types = ['AVG Exp', 'AVG Exp Per Empl', 'Budget'];
-
-
+import React, { useState } from "react";
+import styled from "styled-components";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Row, Col, Tab, Tabs, Nav } from "react-bootstrap";
+import AverageTot from "./stats/averageTotal";
+import PiChart from "./stats/piChart";
+import PendvApp from "./stats/pendvApproved";
 
 export default function MgmtStats() {
-    const [active, setActive] = useState(types[0]);
+  const [key, setKey] = useState("first");
 
+  return (
+    <>
+      <h2>Expenditure Analytics</h2>
 
-    return(
-        <>
-
-        <ButtonGroup>
-            
-          {types.map(type => (
-            <Tab
-              key={type}
-              active={active === type}
-              onClick={() => setActive(type)}
-            > 
-              {type}
-            </Tab>
-          ))}
-        </ButtonGroup>
-      </>
-    )
+      <Tabs
+        defaultActiveKey="profile"
+        id="uncontrolled-tab-example"
+        className="mb-3"
+      >
+        <Tab eventKey="first" title="AVG Reimburse">
+          <AverageTot/>
+        </Tab>
+        <Tab eventKey="second" title="AVG Exp per Month">
+          <PendvApp/>
+        </Tab>
+        <Tab eventKey="third" title="Budget ">
+          <PiChart/>
+        </Tab>
+      </Tabs>
+    </>
+  );
 }

@@ -12,23 +12,24 @@ export default function EmployeeHomePage() {
   const [user, setUser] = useState({
     username: sessionStorage.getItem("username"),
     isAuthorized: Boolean(sessionStorage.getItem("isAuthorized")),
-    status: sessionStorage.getItem("status"),
     isAdmin: Boolean(sessionStorage.getItem("isAdmin")),
+    status: sessionStorage.getItem("status"),
   });
 
+  
   return (
     <>
+  
       <Sidenav />
       <div className="component-space">
-        {!user.isAdmin ? <MgmtAllPending /> : <EmployeeHistTbl />}
+        {user.isAdmin ? <MgmtAllPending /> : <EmployeeHistTbl />}
       </div>
 
-      <div className="component-space">
-        <div className="center-div">
-          {!user.isAdmin ? <MgmtStats/> : <ReimburseTicket />}
-        </div>
+      <div className="center-div">    
+      <div className="component-space">     
+          {user.isAdmin ? <MgmtStats/> : <ReimburseTicket />}
       </div>
-
+      </div>
     </>
   );
 }

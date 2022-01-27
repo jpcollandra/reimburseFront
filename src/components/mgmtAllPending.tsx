@@ -63,7 +63,8 @@ export default function MgmtAllPending() {
           <th>Item ID</th>
           <th>Username</th>
           <th>Item Name</th>
-          <th>Description</th>
+          <th>Cost($)</th>
+          <th>Date</th>
           <th>Status</th>
           <th>Approve or Deny</th>
         </tr>
@@ -74,6 +75,7 @@ export default function MgmtAllPending() {
             <td>{item.id}</td>
             <td>{item.username}</td>
             <td>{item.itemName}</td>
+            <td>{item.itemPrice}</td>
             <td>{item.itemDescription}</td>
             <td>{item.status}</td>
             <td>
