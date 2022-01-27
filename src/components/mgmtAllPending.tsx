@@ -51,6 +51,9 @@ export default function MgmtAllPending() {
       },
       body: JSON.stringify({ id }),
     });
+    const denied = await response.json();
+    console.log(denied);
+    setApproval(denied);
   }
 
   return (

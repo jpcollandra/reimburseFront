@@ -25,11 +25,13 @@ export default function LoginPage(props: { updateUser: Function }) {
     props.updateUser({
       username: employee.username,
       isAuthorized: employee.isAuthorized,
+      isAdmin: employee.isAdmin,
     });
 
     sessionStorage.setItem("username", employee.username);
     sessionStorage.setItem("id", employee.id);
     sessionStorage.setItem("isEmployee", `${employee.isAuthorized}`);
+    sessionStorage.setItem("isAdmin", `${employee.isAdmin}`);
   }
 
   return (

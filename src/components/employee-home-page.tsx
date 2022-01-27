@@ -9,13 +9,17 @@ import "../App.css";
 import MgmtStats from "./mgmtStats";
 
 export default function EmployeeHomePage() {
+  
   const [user, setUser] = useState({
     username: sessionStorage.getItem("username"),
     isAuthorized: Boolean(sessionStorage.getItem("isAuthorized")),
-    isAdmin: Boolean(sessionStorage.getItem("isAdmin")),
+    isAdmin: Boolean(sessionStorage.getItem("isAdmin") === "true" ? true : false) ,
     status: sessionStorage.getItem("status"),
   });
+  
 
+  console.log(user.isAdmin)
+  
   
   return (
     <>

@@ -8,8 +8,7 @@ export default function App() {
 
   const [user, setUser] = useState({
     username:sessionStorage.getItem('username'), 
-    isAuthorized:Boolean(sessionStorage.getItem("isAuthorized")),
-    isAdmin:Boolean(sessionStorage.getItem("isAdmin"))
+    isAuthorized:Boolean(sessionStorage.getItem("isAuthorized"))
   })
 
   return (<>
