@@ -11,7 +11,7 @@ export default function App() {
 
   const [user, setUser] = useState({
     username:sessionStorage.getItem('username'), 
-    isAuthorized:Boolean(sessionStorage.getItem("isAuthorized")=== "true"? true:false),
+    isAuthorized:Boolean(sessionStorage.getItem("isAuthorized") === "true" ? true : false),
     isAdmin: Boolean(sessionStorage.getItem("isAdmin") === "true" ? true : false) ,
   })
 
