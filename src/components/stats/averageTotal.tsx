@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import {
   LineChart,
   Line,
@@ -8,8 +8,10 @@ import {
   Tooltip,
   Legend
 } from "recharts";
+import axios from "axios";
+import {Bar} from "react-chartjs-2";
 
-const data = [
+/* const data = [
   {
     name: "Page A",
     uv: 4000,
@@ -52,33 +54,78 @@ const data = [
     pv: 4300,
     amt: 2100
   }
+]; */
+
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
 ];
 
 export default function AverageTot() {
+
+  const [chartData, setChartData] = useState<any>([]);
+  const [ticketCost, setTickerCost] = useState([]);
+  const [date, setDate] = useState([]);
+
+  async function chart(){
+  let ticketCost = [];
+  let date = [];
+
+  axios.get("http://localhost:3000/items/")
+  .then(res => {
+    console.log(res);
+    for(const dataObj of res.data){
+      const date1 = dataObj.itemDescription
+      const month = date1.slice(5,7);
+      console.log(monthNames[month-1]);
+      ticketCost.push(dataObj.itemPrice);
+      date.push(monthNames[month-1]);
+    }
+    setChartData({
+      labels: date,
+      datasets: [{
+        label: "Average Ticket Cost",
+        data: ticketCost,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+        ]
+      }]
+
+    })
+  })
+
+
+}
+useEffect(() => {
+  chart();
+}, []);
+
   return (
-    <LineChart
-      width={500}
-      height={300}
-      data={data}
-      margin={{
-        top: 5,
-        right: 30,
-        left: 20,
-        bottom: 5
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Line
-        type="monotone"
-        dataKey="pv"
-        stroke="#8884d8"
-        activeDot={{ r: 8 }}
-      />
-      <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-    </LineChart>
+    <>
+
+    </>
   );
 }
+
+/*
+    <h1>Average Ticket Cost</h1>
+    <div>
+      <Bar
+        data={chartData}
+        options={{
+          responsive: true,
+          title: {
+            text: "Average Ticket Cost",
+            display: true},
+          scales: {
+            yAxes: {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          }
+        }}
+      />
+    </div> 
+ */

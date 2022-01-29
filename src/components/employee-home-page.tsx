@@ -10,28 +10,18 @@ import MgmtStats from "./mgmtStats";
 
 export default function EmployeeHomePage() {
   
-  const [user, setUser] = useState({
-    username: sessionStorage.getItem("username"),
-    isAuthorized: Boolean(sessionStorage.getItem("isAuthorized")),
-    isAdmin: Boolean(sessionStorage.getItem("isAdmin") === "true" ? true : false) ,
-    status: sessionStorage.getItem("status"),
-  });
-  
-
-  console.log(user.isAdmin)
-  
-  
   return (
     <>
   
       <Sidenav />
+      <div className="center-div">   
       <div className="component-space">
-        {user.isAdmin ? <MgmtAllPending /> : <EmployeeHistTbl />}
+         <EmployeeHistTbl />
       </div>
-
+      </div>
       <div className="center-div">    
       <div className="component-space">     
-          {user.isAdmin ? <MgmtStats/> : <ReimburseTicket />}
+         <ReimburseTicket />
       </div>
       </div>
     </>

@@ -2,6 +2,7 @@ import { useRef } from "react";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
+import logo from "./walmartLogo.svg";
 
 export default function LoginPage(props: { updateUser: Function }) {
   const usernameInput = useRef(null);
@@ -39,7 +40,10 @@ export default function LoginPage(props: { updateUser: Function }) {
       <div className="auth-wrapper">
         <div className="auth-inner">
           <form>
-            <h3>Sign In</h3>
+          <img src={logo}
+          width="200"
+          height="100"
+          alt="Logo" />
 
             <div className="form-group">
               <label htmlFor="usernameInput">Username</label>
@@ -59,7 +63,7 @@ export default function LoginPage(props: { updateUser: Function }) {
                 className="form-control"
                 type="password"
                 id="passwordInput"
-                placeholder="****"
+                placeholder="password"
               />
             </div>
 
