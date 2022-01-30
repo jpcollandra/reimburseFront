@@ -15,8 +15,6 @@ export default function App() {
     isAdmin: Boolean(sessionStorage.getItem("isAdmin") === "true" ? true : false) ,
   })
 
-  console.log(user.isAdmin)
-
   return (<>
     {
     !user.username ? <LoginPage updateUser={setUser}/>: 

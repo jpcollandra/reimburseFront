@@ -7,8 +7,6 @@ import "../App.css";
 import { Button } from "react-bootstrap";
 export default function EmployeeHomePage() {
 
-  
-
   function logout(){
     sessionStorage.clear()
     window.location.reload()

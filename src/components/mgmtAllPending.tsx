@@ -15,7 +15,6 @@ export default function MgmtAllPending() {
   async function fetchItems() {
     const response = await fetch(`http://localhost:3000/items/status/pending`);
     const items = await response.json();
-    console.log(items);
     setItems(items);
   }
 
@@ -91,7 +90,7 @@ export default function MgmtAllPending() {
               </Button>
               <Button
                 onClick={() => denyItem(item.id)}
-                variant="secondary"
+                variant="danger"
                 type="submit"
               >
                 Deny
