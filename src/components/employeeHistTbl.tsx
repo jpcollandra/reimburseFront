@@ -1,7 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-import { useParams } from "react-router-dom";
 import "../App.css";
 
 //create a table that will display the employee's Item Reimbursement history using bootstrap table

@@ -18,11 +18,6 @@ export default function AverageTot() {
     sumAllPrices();
   }
 
-  useEffect(() => {
-    fetchData();
-    
-  }, []);
-
   function sumAllPrices() {
     let calc = 0;
     for(let i=0; i<data.length; i++){
