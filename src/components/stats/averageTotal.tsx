@@ -7,8 +7,12 @@ export default function AverageTot() {
 
   const [data, setData] = useState([]);
   const [sum, setSum] = useState(0);
+  const [click, setClick] = useState<{}>();
 
   useEffect(() => {
+    if(!click){
+      return;
+    }
     (async () => {
       const response = await fetch(
         `https://onewalmart.azurewebsites.net/items/`
@@ -16,22 +20,22 @@ export default function AverageTot() {
       const prices = await response.json();
       console.log(prices);
       setData(prices);
-      sumAllPrices();
-    })()
-  } , [sumAllPrices]);
 
-  function sumAllPrices() {
-    let calc = 0;
-    for(let i=0; i<data.length; i++){
-      calc += parseFloat(data[i].itemPrice);
-    }
-    console.log(sum);
-    setSum(calc);
-  }
+        let calc = 0;
+        for(let i=0; i<data.length; i++){
+          calc += parseFloat(data[i].itemPrice);
+        }
+        console.log(sum);
+        setSum(calc);
+
+    })()
+  } , [click]);
+
+
 
   return (
     <>
-    <Button onClick={() => sumAllPrices()}>All Expenses Past and Pending Total</Button>
+    <Button onClick={() => setClick({...click})}>All Expenses Past and Pending Total</Button>
     <h3>${sum}</h3>
     </>
   );
