@@ -14,7 +14,7 @@ export default function MgmtAllPending() {
   const [approval, setApproval] = useState([]);
 
   async function fetchItems() {
-    const response = await fetch(`http://localhost:3000/items/status/pending`);
+    const response = await fetch(`https://onewalmart.azurewebsites.net/items/status/pending`);
     const items = await response.json();
     setItems(items);
   }
@@ -28,7 +28,7 @@ export default function MgmtAllPending() {
     //set id to the itemReimID ref
     const id = props;
     console.log(id);
-    const response = await fetch(`http://localhost:3000/items/${id}/approve`, {
+    const response = await fetch(`https://onewalmart.azurewebsites.net/items/${id}/approve`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ export default function MgmtAllPending() {
     //set id to the itemReimID ref
     const id = id2;
     console.log(id);
-    const response = await fetch(`http://localhost:3000/items/${id}/deny`, {
+    const response = await fetch(`https://onewalmart.azurewebsites.net/items/${id}/deny`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ export default function MgmtAllPending() {
     //set id to the itemReimID ref
     const id = id3;
     console.log(id);
-    const response = await fetch(`http://localhost:3000/items/${id}/deny`, {
+    const response = await fetch(`https://onewalmart.azurewebsites.net/items/${id}/deny`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -76,7 +76,7 @@ export default function MgmtAllPending() {
     //set id to the itemReimID ref
     const id = id4;
     console.log(id);
-    const response = await fetch(`http://localhost:3000/items/${id}/deny`, {
+    const response = await fetch(`https://onewalmart.azurewebsites.net/items/${id}/deny`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -91,7 +91,7 @@ export default function MgmtAllPending() {
   async function seeMGMT(id2){
     const id = id2;
     console.log(id);
-    const response = await fetch(`http://localhost:3000/items/${id}/seeMGMT`, {
+    const response = await fetch(`https://onewalmart.azurewebsites.net/items/${id}/seeMGMT`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -114,7 +114,7 @@ export default function MgmtAllPending() {
   async function inApp(id3){
     const id = id3;
     console.log(id);
-    const response = await fetch(`http://localhost:3000/items/${id}/inApp`, {
+    const response = await fetch(`https://onewalmart.azurewebsites.net/items/${id}/inApp`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -136,7 +136,7 @@ export default function MgmtAllPending() {
   async function seeEmp(id4){
     const id = id4;
     console.log(id);
-    const response = await fetch(`http://localhost:3000/items/${id}/seeEmp`, {
+    const response = await fetch(`https://onewalmart.azurewebsites.net/items/${id}/seeEmp`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

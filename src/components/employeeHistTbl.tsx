@@ -17,7 +17,7 @@ export default function EmployeeHistTbl() {
 
   async function fetchEmployeeLog() {
     const response = await fetch(
-      `http://localhost:3000/items/username/${username}`
+      `https://onewalmart.azurewebsites.net/items/username/${username}`
     );
     const employeeLog = await response.json();
     console.log(employeeLog);

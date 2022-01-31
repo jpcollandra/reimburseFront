@@ -37,7 +37,7 @@ export default function ReimburseTicket() {
     };
     console.log(reimbursementPayload);
 
-    const response = await fetch("http://localhost:3000/items", {
+    const response = await fetch("https://onewalmart.azurewebsites.net/items", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -10,7 +10,7 @@ export default function AverageTot() {
 
   async function fetchData() {
     const response = await fetch(
-      `http://localhost:3000/items/`
+      `https://onewalmart.azurewebsites.net/items/`
     );
     const prices = await response.json();
     console.log(prices);
