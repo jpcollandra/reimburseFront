@@ -25,11 +25,10 @@ export default function AverageTot() {
         for(let i=0; i<data.length; i++){
           calc += parseFloat(data[i].itemPrice);
         }
-        console.log(sum);
         setSum(calc);
 
     })()
-  } , [click]);
+  } , [click, data]);
 
 
 
