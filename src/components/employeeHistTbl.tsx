@@ -40,6 +40,7 @@ export default function EmployeeHistTbl() {
           <th>Item Name</th>
           <th>Date</th>
           <th>Status</th>
+          <th>Comments</th>
         </tr>
       </thead>
       <tbody>
@@ -51,6 +52,7 @@ export default function EmployeeHistTbl() {
             <td>{item.itemName}</td>
             <td>{item.itemDescription}</td>
             <td>{item.status}</td>
+            <td>{item.comment}</td>
           </tr>
         ))}
       </tbody>

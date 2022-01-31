@@ -4,7 +4,8 @@ import { Button, Tab } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { useParams } from "react-router-dom";
 import "../App.css";
-
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 //get all items that are pending status and list them on a table
 // will be able to approve or deny items
 
@@ -39,9 +40,9 @@ export default function MgmtAllPending() {
     setApproval(approval);
   }
 
-  async function denyItem(props) {
+  async function denyItem(id2) {
     //set id to the itemReimID ref
-    const id = props;
+    const id = id2;
     console.log(id);
     const response = await fetch(`http://localhost:3000/items/${id}/deny`, {
       method: "PATCH",
@@ -54,6 +55,126 @@ export default function MgmtAllPending() {
     console.log(denied);
     setApproval(denied);
   }
+
+  async function denyItem2(id3) {
+    //set id to the itemReimID ref
+    const id = id3;
+    console.log(id);
+    const response = await fetch(`http://localhost:3000/items/${id}/deny`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    });
+    const denied = await response.json();
+    console.log(denied);
+    setApproval(denied);
+  }
+
+  async function denyItem3(id4) {
+    //set id to the itemReimID ref
+    const id = id4;
+    console.log(id);
+    const response = await fetch(`http://localhost:3000/items/${id}/deny`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    });
+    const denied = await response.json();
+    console.log(denied);
+    setApproval(denied);
+  }
+
+  async function seeMGMT(id2){
+    const id = id2;
+    console.log(id);
+    const response = await fetch(`http://localhost:3000/items/${id}/seeMGMT`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    });
+    const denied = await response.json();
+    console.log(denied);
+    setApproval(denied);
+
+  }
+
+  function seeMGMT2(props){
+    const id2 = props;
+    denyItem(id2);
+    seeMGMT(id2);
+    
+  }
+
+  async function inApp(id3){
+    const id = id3;
+    console.log(id);
+    const response = await fetch(`http://localhost:3000/items/${id}/inApp`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    });
+    const denied = await response.json();
+    console.log(denied);
+    setApproval(denied);
+  }
+
+  function inApp2(props){
+    const id3 = props;
+    denyItem2(id3);
+    inApp(id3);
+    
+  }
+
+  async function seeEmp(id4){
+    const id = id4;
+    console.log(id);
+    const response = await fetch(`http://localhost:3000/items/${id}/seeEmp`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    });
+    const denied = await response.json();
+    console.log(denied);
+    setApproval(denied);
+  }
+
+  function seeEmp2(props){
+    const id4 = props;
+    denyItem3(id4);
+    seeEmp(id4);
+  }
+
+  function btnAlert(props){
+    confirmAlert({
+      title: 'Reason for denial',
+      message: 'Select a reason',
+      buttons: [
+        {
+          label: 'See Management',
+          onClick: () => seeMGMT2(props)
+        },
+        {
+          label: 'Inappropriate use of Funds',
+          onClick: () => inApp2(props)
+        },
+        {
+          label: 'See Employee Handbook',
+          onClick: () => seeEmp2(props)
+        }
+      ]
+    });
+  };
+
 
   return (
     <>
@@ -89,7 +210,7 @@ export default function MgmtAllPending() {
                 Approve
               </Button>
               <Button
-                onClick={() => denyItem(item.id)}
+                onClick={() => btnAlert(item.id)}
                 variant="danger"
                 type="submit"
               >

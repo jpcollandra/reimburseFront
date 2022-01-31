@@ -26,7 +26,7 @@ export default function AverageTot() {
   function sumAllPrices() {
     let calc = 0;
     for(let i=0; i<data.length; i++){
-      calc += parseInt(data[i].itemPrice);
+      calc += parseFloat(data[i].itemPrice);
     }
     console.log(sum);
     setSum(calc);
@@ -34,7 +34,7 @@ export default function AverageTot() {
 
   return (
     <>
-    <Button onClick={() => sumAllPrices()}>Total Costs Past and Pending</Button>
+    <Button onClick={() => sumAllPrices()}>All Expenses Past and Pending Total</Button>
     <h3>${sum}</h3>
     </>
   );

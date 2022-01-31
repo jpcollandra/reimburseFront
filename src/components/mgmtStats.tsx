@@ -15,7 +15,7 @@ export default function MgmtStats() {
 
   return (
     <>
-      <h2>Expenditure Analytics</h2>
+      <h2>Expenditure Calculator</h2>
       <AverageTot/>
     </>
   );
