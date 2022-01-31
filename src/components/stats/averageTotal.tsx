@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button} from "react-bootstrap";
 
@@ -8,15 +8,17 @@ export default function AverageTot() {
   const [data, setData] = useState([]);
   const [sum, setSum] = useState(0);
 
-  async function fetchData() {
-    const response = await fetch(
-      `https://onewalmart.azurewebsites.net/items/`
-    );
-    const prices = await response.json();
-    console.log(prices);
-    setData(prices);
-    sumAllPrices();
-  }
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(
+        `https://onewalmart.azurewebsites.net/items/`
+      );
+      const prices = await response.json();
+      console.log(prices);
+      setData(prices);
+      sumAllPrices();
+    })()
+  } , []);
 
   function sumAllPrices() {
     let calc = 0;

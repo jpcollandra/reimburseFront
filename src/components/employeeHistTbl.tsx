@@ -14,18 +14,17 @@ export default function EmployeeHistTbl() {
 
   const [employeeHist, setEmployeeHist] = useState([]);
 
-  async function fetchEmployeeLog() {
+  useEffect(() => { 
+     (async () => {
     const response = await fetch(
       `https://onewalmart.azurewebsites.net/items/username/${username}`
     );
     const employeeLog = await response.json();
     console.log(employeeLog);
     setEmployeeHist(employeeLog);
-  }
-
-  useEffect(() => {
-    fetchEmployeeLog();
-  }, [fetchEmployeeLog]);
+  })()
+} , []);
+  
 
   return (
     <>
