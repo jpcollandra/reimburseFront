@@ -31,6 +31,7 @@ export default function ReimburseTicket() {
       itemDescription: itemDescriptionInput.current.value,
       status: "pending",
       username: username,
+      comments: "",
     };
     console.log(reimbursementPayload);
 
