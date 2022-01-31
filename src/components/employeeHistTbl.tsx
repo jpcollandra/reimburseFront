@@ -23,7 +23,7 @@ export default function EmployeeHistTbl() {
     console.log(employeeLog);
     setEmployeeHist(employeeLog);
   })()
-} , []);
+} , [username]);
   
 
   return (

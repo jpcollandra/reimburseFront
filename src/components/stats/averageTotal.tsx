@@ -18,7 +18,7 @@ export default function AverageTot() {
       setData(prices);
       sumAllPrices();
     })()
-  } , []);
+  } , [sumAllPrices]);
 
   function sumAllPrices() {
     let calc = 0;
