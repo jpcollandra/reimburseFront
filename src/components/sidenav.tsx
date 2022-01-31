@@ -1,12 +1,6 @@
 import Navbar from "react-bootstrap/Navbar";
 import {
-  Container,
-  Offcanvas,
-  NavDropdown,
-  Nav,
-  Form,
-  FormControl,
-  Button,
+  Container
 } from "react-bootstrap/";
 import logo from "./walmartLogo.svg";
 

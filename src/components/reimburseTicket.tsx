@@ -15,11 +15,9 @@ export default function ReimburseTicket() {
   const itemCostInput = useRef(null);
   const itemDescriptionInput = useRef(null);
 
-  const [user, setUser] = useState({
+  const [user] = useState({
     username: sessionStorage.getItem("username"),
   });
-
-  const [startDate, setStartDate] = useState(new Date());
 
   const username = user.username;
 

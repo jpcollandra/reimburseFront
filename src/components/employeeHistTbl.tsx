@@ -6,7 +6,7 @@ import "../App.css";
 //create a table that will display the employee's Item Reimbursement history using bootstrap table
 
 export default function EmployeeHistTbl() {
-  const [user, setUser] = useState({
+  const [user] = useState({
     username: sessionStorage.getItem("username"),
   });
 
@@ -25,7 +25,7 @@ export default function EmployeeHistTbl() {
 
   useEffect(() => {
     fetchEmployeeLog();
-  }, []);
+  }, [fetchEmployeeLog]);
 
   return (
     <>

@@ -1,8 +1,7 @@
-import React, { createContext, useEffect, useState } from 'react';
+import { useState } from 'react';
 import LoginPage from './components/login-page';
 import EmployeeHomePage from './components/employee-home-page';
 import "./App.css";
-import { createStackNavigator } from "@react-navigation/stack";
 import ManagerHomePage from './components/manager-home-page';
 
 

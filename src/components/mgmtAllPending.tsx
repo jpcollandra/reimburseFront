@@ -1,8 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useEffect, useRef, useState } from "react";
-import { Button, Tab } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
-import { useParams } from "react-router-dom";
 import "../App.css";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
